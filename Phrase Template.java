@@ -19,18 +19,16 @@ public class Phrase
         int loc ;
         int indexCount = 0;
         String temp = currentPhrase;
-        if( currentPhrase.indexOf(str) != -1){
-            for( int i =0; i< n; i++){
-                loc = currentPhrase.indexOf(str);
-                temp = temp.substring(loc + str.length());
-                if(i < n-1){ indexCount += loc+str.length();}
-                else if(i== n-1){ indexCount += loc;}
-            }
-            return indexCount;
-        }
-        else
-            return -1;
-        
+          for( int i =0; i< n; i++){
+              loc = temp.indexOf(str);
+              if(loc == -1){ return -1;)
+                    
+              temp = temp.substring(loc + 1);
+                              
+              if(i < n-1){ indexCount += loc+ 1;}
+              else if(i== n-1){ indexCount += loc;}
+          }
+              return indexCount;
     }
 
     /** Modifies the current phrase by replacing the nth occurrence of str with repl.
