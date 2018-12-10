@@ -16,19 +16,20 @@ public class Phrase
     public static int findNthOccurrence(String str, int n)
     {
         /* implementation not shown */
-        int loc = 0;
-        int indexCount = 1;
-        int start = 0;
-        int sub = 0;
-        while(sub!=-1){
-            loc = currentPharse.substring(start
-            indexCount ++;
-            if( indexCount == n){
-                return loc;
-            }
-            loc += sub;
+        int loc = -1;            // location of the lastest str
+        int count = 1;     // the number of time str ouccurs
+        int start = 0;          // the start position of the str in the cutted string
+        int sub = -1;            // the new substring of cutted string
+        while(currentPharse.substring(start).indexOf(str) !=-1) // 截取部分找str 如果找不到 推出 while loop
+        {   
+           sub = currentPharse.substring(start).indexOf(str);
+           start = sub + 1;
+           loc += start;
+           count++;
+           if( count == n){ return loc-1;}
+        }
+        return -1;
     }
-
     /** Modifies the current phrase by replacing the nth occurrence of str with repl.
      *  If the nth occurrence does not exist, the current phrase is unchanged.
      *  Precondition: str.length() > 0 and n > 0
